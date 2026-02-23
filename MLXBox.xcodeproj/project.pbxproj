@@ -1,0 +1,429 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A1B2C3D40100000100000001 /* MLXBoxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40100000200000001 /* MLXBoxApp.swift */; };
+		A1B2C3D40100000100000002 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40100000200000002 /* AppState.swift */; };
+		A1B2C3D40100000100000003 /* SystemAssessment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40100000200000003 /* SystemAssessment.swift */; };
+		A1B2C3D40100000100000004 /* ModelCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40100000200000004 /* ModelCatalog.swift */; };
+		A1B2C3D40100000100000005 /* LLMFitBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40100000200000005 /* LLMFitBridge.swift */; };
+		A1B2C3D40100000100000006 /* EndpointScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40100000200000006 /* EndpointScanner.swift */; };
+		A1B2C3D40100000100000007 /* ChatClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40100000200000007 /* ChatClient.swift */; };
+		A1B2C3D40100000100000010 /* HuggingFaceModelService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40100000200000010 /* HuggingFaceModelService.swift */; };
+		A1B2C3D40100000100000011 /* ModelInstallManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40100000200000011 /* ModelInstallManager.swift */; };
+		A1B2C3D40100000100000012 /* RuntimePaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40100000200000012 /* RuntimePaths.swift */; };
+		A1B2C3D40100000100000013 /* RuntimeBootstrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40100000200000013 /* RuntimeBootstrapper.swift */; };
+		A1B2C3D40100000100000015 /* UnifiedModelFit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40100000200000015 /* UnifiedModelFit.swift */; };
+		A1B2C3D40100000100000017 /* LocalModelServerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40100000200000017 /* LocalModelServerController.swift */; };
+		A1B2C3D40100000100000018 /* PostTrainingSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40100000200000018 /* PostTrainingSupport.swift */; };
+		A1B2C3D40100000100000019 /* PostTrainingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40100000200000019 /* PostTrainingManager.swift */; };
+		A1B2C3D4010000010000001B /* AdapterRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4010000020000001B /* AdapterRegistry.swift */; };
+		A1B2C3D4010000010000000E /* WhisperBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4010000020000000F /* WhisperBridge.swift */; };
+		A1B2C3D40100000100000008 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40100000200000008 /* ContentView.swift */; };
+		A1B2C3D40100000100000009 /* AssessmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40100000200000009 /* AssessmentView.swift */; };
+		A1B2C3D4010000010000000A /* ModelCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4010000020000000A /* ModelCatalogView.swift */; };
+		A1B2C3D40100000100000014 /* ModelsHubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40100000200000014 /* ModelsHubView.swift */; };
+		A1B2C3D40100000100000016 /* ModelFitHubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D40100000200000016 /* ModelFitHubView.swift */; };
+		A1B2C3D4010000010000001A /* PostTrainingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4010000020000001A /* PostTrainingView.swift */; };
+		A1B2C3D4010000010000000B /* EndpointsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4010000020000000B /* EndpointsView.swift */; };
+		A1B2C3D4010000010000000C /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4010000020000000C /* ChatView.swift */; };
+		A1B2C3D4010000010000000D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4010000020000000D /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A1B2C3D40100000200000001 /* MLXBoxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLXBoxApp.swift; sourceTree = "<group>"; };
+		A1B2C3D40100000200000002 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		A1B2C3D40100000200000003 /* SystemAssessment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemAssessment.swift; sourceTree = "<group>"; };
+		A1B2C3D40100000200000004 /* ModelCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCatalog.swift; sourceTree = "<group>"; };
+		A1B2C3D40100000200000005 /* LLMFitBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLMFitBridge.swift; sourceTree = "<group>"; };
+		A1B2C3D40100000200000006 /* EndpointScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointScanner.swift; sourceTree = "<group>"; };
+		A1B2C3D40100000200000007 /* ChatClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatClient.swift; sourceTree = "<group>"; };
+		A1B2C3D40100000200000010 /* HuggingFaceModelService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuggingFaceModelService.swift; sourceTree = "<group>"; };
+		A1B2C3D40100000200000011 /* ModelInstallManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelInstallManager.swift; sourceTree = "<group>"; };
+		A1B2C3D40100000200000012 /* RuntimePaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuntimePaths.swift; sourceTree = "<group>"; };
+		A1B2C3D40100000200000013 /* RuntimeBootstrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuntimeBootstrapper.swift; sourceTree = "<group>"; };
+		A1B2C3D40100000200000015 /* UnifiedModelFit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnifiedModelFit.swift; sourceTree = "<group>"; };
+		A1B2C3D40100000200000017 /* LocalModelServerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalModelServerController.swift; sourceTree = "<group>"; };
+		A1B2C3D40100000200000018 /* PostTrainingSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTrainingSupport.swift; sourceTree = "<group>"; };
+		A1B2C3D40100000200000019 /* PostTrainingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTrainingManager.swift; sourceTree = "<group>"; };
+		A1B2C3D4010000020000001B /* AdapterRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdapterRegistry.swift; sourceTree = "<group>"; };
+		A1B2C3D4010000020000000F /* WhisperBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhisperBridge.swift; sourceTree = "<group>"; };
+		A1B2C3D40100000200000008 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A1B2C3D40100000200000009 /* AssessmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentView.swift; sourceTree = "<group>"; };
+		A1B2C3D4010000020000000A /* ModelCatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCatalogView.swift; sourceTree = "<group>"; };
+		A1B2C3D40100000200000014 /* ModelsHubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelsHubView.swift; sourceTree = "<group>"; };
+		A1B2C3D40100000200000016 /* ModelFitHubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelFitHubView.swift; sourceTree = "<group>"; };
+		A1B2C3D4010000020000001A /* PostTrainingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTrainingView.swift; sourceTree = "<group>"; };
+		A1B2C3D4010000020000000B /* EndpointsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointsView.swift; sourceTree = "<group>"; };
+		A1B2C3D4010000020000000C /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		A1B2C3D4010000020000000D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A1B2C3D4010000020000000E /* MLXBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = MLXBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A1B2C3D40100000300000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A1B2C3D40100000400000001 = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D40100000400000002 /* MLXBox */,
+				A1B2C3D40100000400000003 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A1B2C3D40100000400000002 /* MLXBox */ = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D40100000400000004 /* App */,
+				A1B2C3D40100000400000005 /* Core */,
+				A1B2C3D40100000400000006 /* UI */,
+				A1B2C3D40100000400000007 /* Resources */,
+			);
+			path = MLXBox;
+			sourceTree = "<group>";
+		};
+		A1B2C3D40100000400000003 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D4010000020000000E /* MLXBox.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A1B2C3D40100000400000004 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D40100000200000001 /* MLXBoxApp.swift */,
+				A1B2C3D40100000200000002 /* AppState.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		A1B2C3D40100000400000005 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D40100000200000003 /* SystemAssessment.swift */,
+				A1B2C3D40100000200000004 /* ModelCatalog.swift */,
+				A1B2C3D40100000200000005 /* LLMFitBridge.swift */,
+				A1B2C3D40100000200000006 /* EndpointScanner.swift */,
+				A1B2C3D40100000200000007 /* ChatClient.swift */,
+				A1B2C3D40100000200000010 /* HuggingFaceModelService.swift */,
+				A1B2C3D40100000200000011 /* ModelInstallManager.swift */,
+				A1B2C3D40100000200000012 /* RuntimePaths.swift */,
+				A1B2C3D40100000200000013 /* RuntimeBootstrapper.swift */,
+				A1B2C3D40100000200000015 /* UnifiedModelFit.swift */,
+				A1B2C3D40100000200000017 /* LocalModelServerController.swift */,
+				A1B2C3D40100000200000018 /* PostTrainingSupport.swift */,
+				A1B2C3D40100000200000019 /* PostTrainingManager.swift */,
+				A1B2C3D4010000020000001B /* AdapterRegistry.swift */,
+				A1B2C3D4010000020000000F /* WhisperBridge.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		A1B2C3D40100000400000006 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D40100000200000008 /* ContentView.swift */,
+				A1B2C3D40100000200000009 /* AssessmentView.swift */,
+				A1B2C3D4010000020000000A /* ModelCatalogView.swift */,
+				A1B2C3D40100000200000014 /* ModelsHubView.swift */,
+				A1B2C3D40100000200000016 /* ModelFitHubView.swift */,
+				A1B2C3D4010000020000001A /* PostTrainingView.swift */,
+				A1B2C3D4010000020000000B /* EndpointsView.swift */,
+				A1B2C3D4010000020000000C /* ChatView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		A1B2C3D40100000400000007 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D4010000020000000D /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A1B2C3D40100000500000001 /* MLXBox */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1B2C3D40100000800000001 /* Build configuration list for PBXNativeTarget "MLXBox" */;
+			buildPhases = (
+				A1B2C3D40100000600000001 /* Sources */,
+				A1B2C3D40100000300000001 /* Frameworks */,
+				A1B2C3D40100000600000002 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MLXBox;
+			productName = MLXBox;
+			productReference = A1B2C3D4010000020000000E /* MLXBox.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A1B2C3D40100000700000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					A1B2C3D40100000500000001 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = A1B2C3D40100000800000002 /* Build configuration list for PBXProject "MLXBox" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A1B2C3D40100000400000001;
+			productRefGroup = A1B2C3D40100000400000003 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A1B2C3D40100000500000001 /* MLXBox */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A1B2C3D40100000600000002 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1B2C3D4010000010000000D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A1B2C3D40100000600000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1B2C3D40100000100000001 /* MLXBoxApp.swift in Sources */,
+				A1B2C3D40100000100000002 /* AppState.swift in Sources */,
+				A1B2C3D40100000100000003 /* SystemAssessment.swift in Sources */,
+				A1B2C3D40100000100000004 /* ModelCatalog.swift in Sources */,
+				A1B2C3D40100000100000005 /* LLMFitBridge.swift in Sources */,
+				A1B2C3D40100000100000006 /* EndpointScanner.swift in Sources */,
+				A1B2C3D40100000100000007 /* ChatClient.swift in Sources */,
+				A1B2C3D40100000100000010 /* HuggingFaceModelService.swift in Sources */,
+				A1B2C3D40100000100000011 /* ModelInstallManager.swift in Sources */,
+				A1B2C3D40100000100000012 /* RuntimePaths.swift in Sources */,
+				A1B2C3D40100000100000013 /* RuntimeBootstrapper.swift in Sources */,
+				A1B2C3D40100000100000015 /* UnifiedModelFit.swift in Sources */,
+				A1B2C3D40100000100000017 /* LocalModelServerController.swift in Sources */,
+				A1B2C3D40100000100000018 /* PostTrainingSupport.swift in Sources */,
+				A1B2C3D40100000100000019 /* PostTrainingManager.swift in Sources */,
+				A1B2C3D4010000010000001B /* AdapterRegistry.swift in Sources */,
+				A1B2C3D4010000010000000E /* WhisperBridge.swift in Sources */,
+				A1B2C3D40100000100000008 /* ContentView.swift in Sources */,
+				A1B2C3D40100000100000009 /* AssessmentView.swift in Sources */,
+				A1B2C3D4010000010000000A /* ModelCatalogView.swift in Sources */,
+				A1B2C3D40100000100000014 /* ModelsHubView.swift in Sources */,
+				A1B2C3D40100000100000016 /* ModelFitHubView.swift in Sources */,
+				A1B2C3D4010000010000001A /* PostTrainingView.swift in Sources */,
+				A1B2C3D4010000010000000B /* EndpointsView.swift in Sources */,
+				A1B2C3D4010000010000000C /* ChatView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A1B2C3D40100000900000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A1B2C3D40100000900000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		A1B2C3D40100000900000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = MLXBox;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "MLXBox scans local endpoints and sends chat requests to local model servers.";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mlxbox.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		A1B2C3D40100000900000004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = MLXBox;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "MLXBox scans local endpoints and sends chat requests to local model servers.";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mlxbox.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A1B2C3D40100000800000001 /* Build configuration list for PBXNativeTarget "MLXBox" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1B2C3D40100000900000003 /* Debug */,
+				A1B2C3D40100000900000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1B2C3D40100000800000002 /* Build configuration list for PBXProject "MLXBox" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1B2C3D40100000900000001 /* Debug */,
+				A1B2C3D40100000900000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A1B2C3D40100000700000001 /* Project object */;
+}
