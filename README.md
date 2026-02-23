@@ -47,7 +47,7 @@ Expected bundle location:
 ## Notes
 
 - `llmfit` is optional. If unavailable, MLXBox uses built-in estimation heuristics.
-- Startup bootstrap tries to install: `llmfit`, `whisper-cpp`, and Python runtime packages (`mlx`, `mlx-lm[train]`, `huggingface_hub[cli]`).
+- Startup bootstrap installs Python runtime packages (`mlx`, `mlx-lm[train]`, `huggingface_hub[cli]`) and optionally installs `llmfit`/`whisper-cpp` when Homebrew is available.
 - Chat assumes an OpenAI-compatible local endpoint (`/v1/chat/completions`).
 - Model fit estimates are conservative and aimed at avoiding swap.
 

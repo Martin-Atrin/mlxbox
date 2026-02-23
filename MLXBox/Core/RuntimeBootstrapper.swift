@@ -46,11 +46,22 @@ enum RuntimeBootstrapper {
                     )
                 }
 
-                let brew = try resolveExecutable("brew")
-                results.append(contentsOf: try ensureLLMFit(brewExecutable: brew))
-                results.append(contentsOf: try ensureWhisperCPP(brewExecutable: brew))
-                results.append(contentsOf: try ensurePythonRuntime(forceRepair: repair))
-                try writeBootstrapState()
+                let brew = try? resolveExecutable("brew")
+                results.append(contentsOf: runStep(name: "llmfit") {
+                    try ensureLLMFit(brewExecutable: brew)
+                })
+                results.append(contentsOf: runStep(name: "whisper.cpp") {
+                    try ensureWhisperCPP(brewExecutable: brew)
+                })
+
+                let pythonResults = runStep(name: "Python runtime") {
+                    try ensurePythonRuntime(forceRepair: repair)
+                }
+                results.append(contentsOf: pythonResults)
+
+                if !pythonResults.contains(where: { $0.state == .failed }) {
+                    try? writeBootstrapState()
+                }
             } catch {
                 results.append(
                     RuntimeStepResult(
@@ -75,7 +86,11 @@ enum RuntimeBootstrapper {
         }
 
         guard let brewExecutable else {
-            return [RuntimeStepResult(name: "llmfit", state: .failed, detail: "Homebrew not found; cannot auto-install llmfit.")]
+            return [RuntimeStepResult(
+                name: "llmfit",
+                state: .skipped,
+                detail: "Homebrew not found; skipping optional llmfit install. Heuristic fit scoring remains available."
+            )]
         }
 
         try runCommand(executable: brewExecutable, arguments: ["tap", "AlexsJones/llmfit"])
@@ -91,7 +106,11 @@ enum RuntimeBootstrapper {
         }
 
         guard let brewExecutable else {
-            return [RuntimeStepResult(name: "whisper.cpp", state: .failed, detail: "Homebrew not found; cannot auto-install whisper-cpp.")]
+            return [RuntimeStepResult(
+                name: "whisper.cpp",
+                state: .skipped,
+                detail: "Homebrew not found; skipping optional whisper.cpp install."
+            )]
         }
 
         try runCommand(executable: brewExecutable, arguments: ["install", "whisper-cpp"])
@@ -130,16 +149,6 @@ enum RuntimeBootstrapper {
     }
 
     private static func runtimeLooksHealthy() throws -> Bool {
-        guard let llmfit = try resolveExecutable("llmfit"),
-              runQuickCheck(executable: llmfit, arguments: ["--version"]) else {
-            return false
-        }
-
-        let hasWhisperServer = try resolveExecutable("whisper-server") != nil
-        let hasWhisperCLI = try resolveExecutable("whisper-cli") != nil
-        let whisperOK = hasWhisperServer || hasWhisperCLI
-        guard whisperOK else { return false }
-
         let venvPython = try RuntimePaths.venvBinary("python3").path
         let venvPip = try RuntimePaths.venvBinary("pip").path
         let venvHF = try RuntimePaths.venvBinary("hf").path
@@ -156,6 +165,20 @@ enum RuntimeBootstrapper {
             return false
         }
         return true
+    }
+
+    private static func runStep(name: String, work: () throws -> [RuntimeStepResult]) -> [RuntimeStepResult] {
+        do {
+            return try work()
+        } catch {
+            return [
+                RuntimeStepResult(
+                    name: name,
+                    state: .failed,
+                    detail: error.localizedDescription
+                )
+            ]
+        }
     }
 
     private static func pythonPackagesHealthy() -> Bool {
