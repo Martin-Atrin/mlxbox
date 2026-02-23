@@ -46,7 +46,7 @@ enum RuntimeBootstrapper {
                     )
                 }
 
-                let brew = try? resolveExecutable("brew")
+                let brew = resolveBrewExecutable()
                 results.append(contentsOf: runStep(name: "llmfit") {
                     try ensureLLMFit(brewExecutable: brew)
                 })
@@ -118,8 +118,14 @@ enum RuntimeBootstrapper {
     }
 
     private static func ensurePythonRuntime(forceRepair: Bool) throws -> [RuntimeStepResult] {
-        guard let python3 = try resolveExecutable("python3") else {
-            return [RuntimeStepResult(name: "Python runtime", state: .failed, detail: "python3 not found.")]
+        guard let python3 = resolvePythonExecutable() else {
+            return [
+                RuntimeStepResult(
+                    name: "Python runtime",
+                    state: .failed,
+                    detail: "python3 not found. Install Python 3 (or Xcode Command Line Tools) and re-run Runtime Bootstrap."
+                )
+            ]
         }
 
         var results: [RuntimeStepResult] = []
@@ -129,9 +135,17 @@ enum RuntimeBootstrapper {
 
         if !FileManager.default.fileExists(atPath: venvPython.path) {
             try runCommand(executable: python3, arguments: ["-m", "venv", venvRoot.path])
-            results.append(RuntimeStepResult(name: "Python venv", state: .installed, detail: "Created runtime virtual environment."))
+            results.append(RuntimeStepResult(
+                name: "Python venv",
+                state: .installed,
+                detail: "Created runtime virtual environment at \(venvRoot.path) using \(python3)."
+            ))
         } else {
-            results.append(RuntimeStepResult(name: "Python venv", state: .ok, detail: "Virtual environment already exists."))
+            results.append(RuntimeStepResult(
+                name: "Python venv",
+                state: .ok,
+                detail: "Virtual environment already exists at \(venvRoot.path)."
+            ))
         }
 
         if forceRepair || !pythonPackagesHealthy() {
@@ -140,9 +154,17 @@ enum RuntimeBootstrapper {
                 executable: venvPip.path,
                 arguments: ["install", "--upgrade", "mlx", "mlx-lm[train]", "huggingface_hub[cli]"]
             )
-            results.append(RuntimeStepResult(name: "MLX runtime", state: .installed, detail: "Installed/updated mlx, mlx-lm[train], and huggingface CLI."))
+            results.append(RuntimeStepResult(
+                name: "MLX runtime",
+                state: .installed,
+                detail: "Installed/updated mlx, mlx-lm[train], and huggingface CLI in \(venvRoot.path)."
+            ))
         } else {
-            results.append(RuntimeStepResult(name: "MLX runtime", state: .ok, detail: "Python packages already available."))
+            results.append(RuntimeStepResult(
+                name: "MLX runtime",
+                state: .ok,
+                detail: "Python packages already available in \(venvRoot.path)."
+            ))
         }
 
         return results
@@ -224,6 +246,36 @@ enum RuntimeBootstrapper {
             .trimmingCharacters(in: .whitespacesAndNewlines)
         guard let output, !output.isEmpty else { return nil }
         return output
+    }
+
+    private static func resolveBrewExecutable() -> String? {
+        let explicitCandidates = [
+            "/opt/homebrew/bin/brew",
+            "/usr/local/bin/brew"
+        ]
+        if let found = firstExecutable(at: explicitCandidates) {
+            return found
+        }
+        return try? resolveExecutable("brew")
+    }
+
+    private static func resolvePythonExecutable() -> String? {
+        let explicitCandidates = [
+            "/usr/bin/python3",
+            "/opt/homebrew/bin/python3",
+            "/usr/local/bin/python3"
+        ]
+        if let found = firstExecutable(at: explicitCandidates) {
+            return found
+        }
+        return try? resolveExecutable("python3")
+    }
+
+    private static func firstExecutable(at paths: [String]) -> String? {
+        for path in paths where FileManager.default.isExecutableFile(atPath: path) {
+            return path
+        }
+        return nil
     }
 
     private static func runCommand(executable: String, arguments: [String]) throws {
