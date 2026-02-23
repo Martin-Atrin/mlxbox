@@ -14,6 +14,7 @@ What it does:
 - Bridges to [`llmfit`](https://github.com/AlexsJones/llmfit) when installed
 - Pulls `mlx-community` model catalog from Hugging Face collections/API
 - Adds secondary embedding discovery from Hugging Face `feature-extraction` feed (MLX-signaled models)
+- Adds secondary Whisper ASR discovery from Hugging Face `automatic-speech-recognition` feed
 - Auto-categorizes models (chat, coding, reasoning, embedding, multimodal, speech, etc.)
 - Marks models as `Trainable` for MLX-LM post-training workflows
 - One-click model install/delete from within the app

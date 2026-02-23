@@ -3,6 +3,7 @@ import Foundation
 enum ModelSource: String, Sendable {
     case mlxCommunity = "mlx-community"
     case embeddingDiscovery = "embedding-discovery"
+    case speechDiscovery = "speech-discovery"
 }
 
 enum ModelCategory: String, CaseIterable, Sendable {
@@ -43,10 +44,12 @@ enum HuggingFaceModelService {
     static let collectionsURL = URL(string: "https://huggingface.co/mlx-community/collections")!
     static let modelsAPIURL = URL(string: "https://huggingface.co/api/models?author=mlx-community&limit=200&sort=downloads&direction=-1")!
     static let embeddingAPIURL = URL(string: "https://huggingface.co/api/models?pipeline_tag=feature-extraction&limit=500&sort=downloads&direction=-1")!
+    static let speechAPIURL = URL(string: "https://huggingface.co/api/models?pipeline_tag=automatic-speech-recognition&limit=500&sort=downloads&direction=-1")!
 
     static func fetchMLXCommunityModels() async throws -> [RemoteModel] {
         async let primaryRaw = fetchModels(url: modelsAPIURL)
         async let embeddingRaw = fetchModels(url: embeddingAPIURL)
+        async let speechRaw = fetchModels(url: speechAPIURL)
 
         let primary = try await primaryRaw.map { dto in
             mapToRemote(dto, source: .mlxCommunity)
@@ -56,8 +59,12 @@ enum HuggingFaceModelService {
             .filter { dto in isSecondaryEmbeddingCandidate(dto) }
             .map { dto in mapToRemote(dto, source: .embeddingDiscovery, forcedCategory: .embedding) }
 
+        let secondarySpeech = try await speechRaw
+            .filter { dto in isSecondarySpeechCandidate(dto) }
+            .map { dto in mapToRemote(dto, source: .speechDiscovery, forcedCategory: .speechToText) }
+
         var mergedByID: [String: RemoteModel] = [:]
-        for model in primary + secondaryEmbeddings {
+        for model in primary + secondaryEmbeddings + secondarySpeech {
             guard model.id != "unknown" else { continue }
             if let existing = mergedByID[model.id] {
                 // Prefer mlx-community source, then higher downloads.
@@ -156,6 +163,28 @@ enum HuggingFaceModelService {
             tags.contains(where: { $0.contains("mlx") })
 
         return embeddingSignal && mlxSignal
+    }
+
+    private static func isSecondarySpeechCandidate(_ item: HFModelDTO) -> Bool {
+        let id = (item.id ?? item.modelId ?? "").lowercased()
+        let tags = (item.tags ?? []).map { $0.lowercased() }
+        let pipeline = (item.pipelineTag ?? "").lowercased()
+
+        let speechSignal =
+            pipeline == "automatic-speech-recognition" ||
+            tags.contains("automatic-speech-recognition") ||
+            tags.contains("asr") ||
+            id.contains("asr") ||
+            id.contains("transcrib")
+
+        // Keep the secondary feed focused on Whisper-family models.
+        let whisperSignal =
+            id.contains("whisper") ||
+            tags.contains("whisper") ||
+            tags.contains("whisper.cpp") ||
+            tags.contains(where: { $0.contains("faster-whisper") })
+
+        return speechSignal && whisperSignal
     }
 
     private static func inferCategory(id: String, pipelineTag: String?, tags: [String], libraryName: String?) -> ModelCategory {

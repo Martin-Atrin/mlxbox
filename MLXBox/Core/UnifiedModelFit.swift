@@ -98,6 +98,11 @@ enum UnifiedModelFitBuilder {
     }
 
     private static func inferQuantization(from model: RemoteModel) -> Quantization {
+        // Speech models are typically CPU-focused and should use a conservative memory estimate.
+        if model.category == .speechToText || model.category == .audio {
+            return .q8
+        }
+
         let id = model.id.lowercased()
         let tags = model.tags.map { $0.lowercased() }
 
@@ -119,13 +124,41 @@ enum UnifiedModelFitBuilder {
         guard let match = regex.firstMatch(in: text, options: [], range: range),
               let valueRange = Range(match.range(at: 1), in: text),
               let unitRange = Range(match.range(at: 2), in: text) else {
-            return nil
+            return inferWhisperParamsB(from: text)
         }
 
         guard let value = Double(text[valueRange]) else { return nil }
         let unit = text[unitRange]
         if unit == "b" { return value }
         return value / 1000.0
+    }
+
+    private static func inferWhisperParamsB(from text: String) -> Double? {
+        guard text.contains("whisper") else { return nil }
+
+        if text.contains("turbo") {
+            return 0.809
+        }
+        if text.contains("distil") {
+            return 0.756
+        }
+        if text.contains("large") {
+            return 1.55
+        }
+        if text.contains("medium") {
+            return 0.769
+        }
+        if text.contains("small") {
+            return 0.244
+        }
+        if text.contains("base") {
+            return 0.074
+        }
+        if text.contains("tiny") {
+            return 0.039
+        }
+
+        return nil
     }
 
     private static func bestRecommendationMatch(for modelID: String, remoteParamsB: Double?, in recommendations: [LLMFitRecommendation]) -> LLMFitRecommendation? {
